@@ -1,27 +1,27 @@
 <div style="height: 90pt;"></div>
 <div style="flex: 0 0 16%; margin-top: -10pt;">
-<img src="https://cdn.iconscout.com/icon/free/png-256/openai-1524384-1290687.png" width="100px">
+<img src="https://raw.githubusercontent.com/PyTorchLightning/pytorch-lightning/master/docs/source/_static/images/logo.png">
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
-<h1 style="margin-bottom: 10pt;">Demo: CLIP Research Poster</h1>
-<h2>A demo of CLIP research paper using Lightning App</h2>
+<h1 style="margin-bottom: 10pt;">Demo: FaceNet</h1>
+<h2>A demo of FaceNet research paper using Lightning App</h2>
 </div>
 <div style="flex: 1">
     <div style="display: flex; align-items: center;">
         <img style="height: 20pt; width: 20pt; margin: 5pt;" src="icons/fontawesome/brands/github.svg">
-        <div style="font-size: 0.9rem; margin-right: 5pt;"><a href="https://github.com/openai/">OpenAI</a></div>
+        <div style="font-size: 0.9rem; margin-right: 5pt;"><a href="https://github.com/PyTorchLightning/">PyTorchLightning</a></div>
     </div>
     <div style="display: flex; align-items: center;">
         <img style="height: 20pt; width: 20pt; margin: 5pt;" src="icons/fontawesome/brands/twitter.svg">
-        <div style="font-size: 0.9rem;"><a href="https://twitter.com/OpenAI">@OpenAI</a></div>
+        <div style="font-size: 0.9rem;"><a href="https://twitter.com/PyTorchLightnin">@PyTorchLightnin</a></div>
     </div>
 </div>
 
 --split--
 
-# Natural Language based Image Search
+# SpiderMan Universe Finder based on FaceNet (A Unified Embedding for Face Recognition and Clustering)
 
-## OpenAI introduced a neural network called CLIP which efficiently learns visual concepts from natural language supervision.
+## FaceNet achieved a record new 99.63% accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
 
 This app is a demo
 of [Lightning Research Template app](https://github.com/PyTorchLightning/lightning-template-research-app) which allows
@@ -31,17 +31,15 @@ Explore the tabs at the top of this app to view blog, paper, training logs and m
 
 You can fork this app and edit to customize according to your need.
 
-Kudos to Soumik Rakshit and Manan Goel for their awesome
-repository [clip-lightning](https://github.com/soumik12345/clip-lightning)
+Thanks to [timesler](https://github.com/timesler) for building amazing
+library [facenet-pytorch](https://github.com/timesler/facenet-pytorch).
 
-Thanks to [Vivien](https://github.com/vivien000) for his inspiring application using
-CLIP [Minimal user-friendly demo of OpenAI's CLIP for semantic image search](https://github.com/vivien000/clip-demo).
+[//]: # (<img src="https://openaiassets.blob.core.windows.net/$web/clip/draft/20210104b/overview-a.svg">)
 
-<img src="https://openaiassets.blob.core.windows.net/$web/clip/draft/20210104b/overview-a.svg">
-
-CLIP pre-trains an image encoder and a text encoder to predict which images were paired with which texts in our dataset.
-We then use this behavior to turn CLIP into a zero-shot classifier. We convert all of a dataset's classes into captions
-such as "a photo of a dog" and predict the class of the caption CLIP estimates best pairs with a given image.
+FaceNet uses a deep convolutional network trained to directly optimize the embedding itself, rather than an intermediate
+bottleneck layer as in previous deep learning approaches. To train, it uses triplets of roughly aligned matching /
+non-matching face patches generated using a novel online triplet mining method. The benefit of this approach is much
+greater representational efficiency.
 
 --split--
 
@@ -69,20 +67,20 @@ graph LR
 ```python
 import lightning as L
 
-paper = "https://arxiv.org/pdf/2103.00020.pdf"
-blog = "https://openai.com/blog/clip/"
-github = "https://github.com/soumik12345/clip-lightning/tree/AddModelCheckpoint"
-wandb = "https://wandb.ai/manan-goel/clip-lightning-image_retrieval/runs/1cedtohj"
+poster_dir = "resources"
+paper = "https://arxiv.org/pdf/1503.03832"
+blog = "https://aniketmaurya.com/tensorflow/face%20recognition/2019/01/07/face-recognition.html"
+github = "https://github.com/timesler/facenet-pytorch"
 
 app = L.LightningApp(
     ResearchApp(
-        resource_path="resources",
+        poster_dir=poster_dir,
         paper=paper,
         blog=blog,
-        training_log_url=wandb,
         github=github,
-        notebook_path="resources/Interacting_with_CLIP.ipynb",
-        enable_gradio=True,
+        notebook_path="resources/facenet-pytorch.ipynb",
+        launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
+        launch_gradio=True,
     )
 )
 ```

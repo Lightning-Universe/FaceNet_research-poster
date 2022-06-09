@@ -3,10 +3,10 @@ import os
 from typing import Dict, List, Optional
 
 import lightning as L
+from lit_jupyter import LitJupyter
 from rich import print
 from rich.logging import RichHandler
 
-from research_app.components.jupyter_notebook import JupyterLab
 from research_app.components.markdown_poster import Poster
 from research_app.components.model_demo import ModelDemo
 from research_app.utils import clone_repo, notebook_to_html
@@ -73,7 +73,7 @@ class ResearchApp(L.LightningFlow):
             clone_repo(github)
 
         if launch_jupyter_lab:
-            self.jupyter_lab = JupyterLab()
+            self.jupyter_lab = LitJupyter()
             logger.warning(
                 "Sharing Jupyter publicly is not recommended and exposes security vulnerability "
                 "to the cloud instance."
@@ -113,10 +113,10 @@ class ResearchApp(L.LightningFlow):
             tabs.append({"name": "Training Logs", "content": self.training_logs})
 
         if self.model_demo:
-            tabs.append({"name": "Model Demo: Unsplash Image Search", "content": self.model_demo.url})
+            tabs.append({"name": "Model Demo", "content": self.model_demo.url})
 
         if self.jupyter_lab:
-            tabs.append({"name": "Jupyter Lab", "content": self.jupyter_lab.url})
+            tabs.append({"name": "JupyterLab", "content": self.jupyter_lab.url})
 
         return self._order_tabs(tabs)
 
@@ -136,22 +136,17 @@ class ResearchApp(L.LightningFlow):
 
 if __name__ == "__main__":
     poster_dir = "resources"
-    paper = "https://arxiv.org/pdf/2103.00020"
-    blog = "https://openai.com/blog/clip/"
-    github = "https://github.com/openai/CLIP"
-    wandb = "https://wandb.ai/manan-goel/clip-lightning-image_retrieval/runs/1cedtohj"
-    tabs = ["Blog", "Paper", "Poster", "Notebook Viewer", "Training Logs", "Model Demo: Unsplash Image Search"]
+    paper = "https://arxiv.org/pdf/1503.03832"
+    blog = "https://aniketmaurya.com/tensorflow/face%20recognition/2019/01/07/face-recognition.html"
+    github = "https://github.com/timesler/facenet-pytorch"
 
     app = L.LightningApp(
         ResearchApp(
             poster_dir=poster_dir,
             paper=paper,
             blog=blog,
-            training_log_url=wandb,
             github=github,
-            notebook_path="resources/Interacting_with_CLIP.ipynb",
-            launch_jupyter_lab=False,  # don't launch for public app, can expose to security vulnerability
+            notebook_path="resources/infer.ipynb",
             launch_gradio=True,
-            tab_order=tabs,
-        )
+        ),
     )
