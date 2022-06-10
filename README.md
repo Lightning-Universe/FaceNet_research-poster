@@ -1,13 +1,13 @@
-# ⚡️ SpiderMan Universe Finder 🔬
+# ⚡️ SpiderMan Universe Finder (using FaceNet)🔬
 
 SpiderMan Universe Finder based on FaceNet (A Unified Embedding for Face Recognition and Clustering)
 
 FaceNet achieved a record new `99.63%` accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
 
-This app is a demo
-of [Lightning Research Template app](https://github.com/PyTorchLightning/lightning-template-research-app) which allows
-authors to build an app to share their everything related to their work at a single place.
-Explore the tabs at the top of this app to view blog, paper, training logs and model demo.
+This app is a research poster demo of FaceNet paper. It showcases paper, a notebook, a blog, and a model demo where you
+can upload photos of Peter Parker (SpiderMan) from any universe and show you their bio.
+To create a research poster for your work please
+use [Lightning Research Template app](https://github.com/PyTorchLightning/lightning-template-research-app).
 
 ## Getting started
 
