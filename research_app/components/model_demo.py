@@ -24,9 +24,11 @@ class ModelDemo(ServeGradio):
     outputs = gr.outputs.Textbox()
     enable_queue = True
 
-    examples = [["resources/peter/example.jpg"],
-                ["resources/peter/tobey.jpeg"],
-                ["resources/peter/andrew-garfield.jpg"]]
+    examples = [
+        ["resources/peter/example.jpg"],
+        ["resources/peter/tobey.jpeg"],
+        ["resources/peter/andrew-garfield.jpg"],
+    ]
 
     def __init__(self):
         super().__init__(parallel=True)

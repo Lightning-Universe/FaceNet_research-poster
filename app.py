@@ -113,7 +113,7 @@ class ResearchApp(L.LightningFlow):
             tabs.append({"name": "Training Logs", "content": self.training_logs})
 
         if self.model_demo:
-            tabs.append({"name": "Model Demo", "content": self.model_demo.url})
+            tabs.append({"name": "Model Demo: Spiderman finder", "content": self.model_demo.url})
 
         if self.jupyter_lab:
             tabs.append({"name": "JupyterLab", "content": self.jupyter_lab.url})

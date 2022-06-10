@@ -7,14 +7,31 @@ from glob import glob
 from os.path import basename
 
 import torch
-from facenet_pytorch import MTCNN, InceptionResnetV1
 from PIL import Image
+from facenet_pytorch import MTCNN, InceptionResnetV1
 from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
 logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
 
 logger = logging.getLogger(__name__)
+
+BIO = {
+    "tom": "Thomas Stanley Holland (born 1 June 1996) is an English actor. "
+           "His accolades include a British Academy Film Award, three Saturn Awards, "
+           "a Guinness World Record and an appearance on the Forbes 30 Under 30 Europe list. "
+           "Some publications have called him one of the most popular actors of his generation. Source: Wikipedia",
+
+    "tobey": "Tobias Vincent Maguire is an American actor and film producer."
+             "He is best known for playing the title character from Sam Raimi's Spider-Man trilogy, "
+             "a role he later reprised in Spider-Man: No Way Home. Source: Wikipedia",
+
+    "andrew": "Andrew Russell Garfield is an English and American actor."
+              "He has received various accolades, including a Tony Award, "
+              "a British Academy Television Award and a Golden Globe Award, "
+              "in addition to nominations for a Laurence Olivier Award, "
+              "two Academy Awards and three British Academy Film Awards. Source: Wikipedia"
+}
 
 
 class FaceNetDemo:
@@ -50,4 +67,8 @@ class FaceNetDemo:
             if dist < least_dist:
                 least_dist = dist
                 best_match = peter
-        return best_match
+        if least_dist > 0.8:
+            logger.info(f"Large distance {best_match}: {least_dist}")
+        if least_dist > 1:
+            return f"This looks like {best_match} but the similarity score distance is too high {least_dist}"
+        return BIO[best_match]
