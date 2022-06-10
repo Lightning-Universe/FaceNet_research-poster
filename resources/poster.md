@@ -3,8 +3,8 @@
 <img src="https://raw.githubusercontent.com/PyTorchLightning/pytorch-lightning/master/docs/source/_static/images/logo.png">
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
-<h1 style="margin-bottom: 10pt;">Demo: FaceNet</h1>
-<h2>A demo of FaceNet research paper using Lightning App</h2>
+<h1 style="margin-bottom: 10pt;">SpiderMan Universe Finder</h1>
+<h2>Recognize the SpiderMan actor name powered by FaceNet paper.</h2>
 </div>
 <div style="flex: 1">
     <div style="display: flex; align-items: center;">
@@ -21,7 +21,7 @@
 
 # SpiderMan Universe Finder based on FaceNet (A Unified Embedding for Face Recognition and Clustering)
 
-## FaceNet achieved a record new 99.63% accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
+## FaceNet achieved a record new `99.63%` accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
 
 This app is a demo
 of [Lightning Research Template app](https://github.com/PyTorchLightning/lightning-template-research-app) which allows

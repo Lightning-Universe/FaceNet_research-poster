@@ -1,10 +1,11 @@
 import logging
 
 import gradio as gr
+from PIL import Image
 from lightning.components.serve import ServeGradio
 from rich.logging import RichHandler
 
-from research_app.clip_demo import CLIPDemo
+from research_app.facenet_demo import FaceNetDemo
 
 FORMAT = "%(message)s"
 logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
@@ -19,19 +20,22 @@ class ModelDemo(ServeGradio):
     automatically launch the Gradio interface.
     """
 
-    inputs = gr.inputs.Textbox(default="Going into the space", label="Unsplash Image Search")
-    outputs = gr.outputs.HTML(label="Images from Unsplash")
+    inputs = gr.inputs.Image(label="Recognize Peter Parker from any universe!")
+    outputs = gr.outputs.Textbox()
     enable_queue = True
-    examples = [["Cat reading a book"], ["Going into the space"]]
+
+    examples = [["resources/peter/example.jpg"],
+                ["resources/peter/tobey.jpeg"],
+                ["resources/peter/andrew-garfield.jpg"]]
 
     def __init__(self):
         super().__init__(parallel=True)
 
-    def build_model(self) -> CLIPDemo:
+    def build_model(self) -> FaceNetDemo:
         logger.info("loading model...")
-        clip = CLIPDemo()
+        facenet = FaceNetDemo()
         logger.info("built model!")
-        return clip
+        return facenet
 
-    def predict(self, query: str) -> str:
-        return self.model.predict(query)
+    def predict(self, image: Image.Image) -> str:
+        return self.model.predict(image)
