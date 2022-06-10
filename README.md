@@ -1,8 +1,13 @@
-# ⚡️ Lightning Research Poster Template 🔬
+# ⚡️ SpiderMan Universe Finder 🔬
 
-Use this app to share your research paper results. This app lets you connect a blogpost, arxiv paper, and a jupyter
-notebook and even have an interactive demo for people to play with the model. This app also allows industry
-practitioners to reproduce your work.
+SpiderMan Universe Finder based on FaceNet (A Unified Embedding for Face Recognition and Clustering)
+
+FaceNet achieved a record new `99.63%` accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
+
+This app is a demo
+of [Lightning Research Template app](https://github.com/PyTorchLightning/lightning-template-research-app) which allows
+authors to build an app to share their everything related to their work at a single place.
+Explore the tabs at the top of this app to view blog, paper, training logs and model demo.
 
 ## Getting started
 
@@ -14,7 +19,7 @@ manually install the app as mentioned below.
 
 #### With Lightning CLI
 
-`lightning install app lightning/research_poster`
+`lightning install app lightning/spiderman-finder`
 
 #### Use GitHub template
 
@@ -23,16 +28,8 @@ your account.
 
 > ![use-template.png](./assets/use-template.png)
 
-You can clone the forked app repo and follow the steps below to install the app.
 
-```
-git clone https://github.com/YOUR-USERNAME/lightning-template-research-app.git
-cd lightning-template-research-app
-pip install -r requirements.txt
-pip install -e .
-```
-
-Once you have installed the app, you can goto the `lightning-template-research-app` folder and
+Once you have installed the app, you can goto the `research-poster-facenet` folder and
 run `lightning run app app.py --cloud` from terminal.
 This will launch the template app in your default browser with tabs containing research paper, blog, Training
 logs, and Model Demo.
@@ -63,24 +60,20 @@ each of the arguments does in the docstrings.
 # update app.py at the root of the repo
 import lightning as L
 
-paper = "https://arxiv.org/pdf/2103.00020.pdf"
-blog = "https://openai.com/blog/clip/"
-github = "https://github.com/mlfoundations/open_clip"
-wandb = "https://wandb.ai/aniketmaurya/herbarium-2022/runs/2dvwrme5"
-tabs = ["Poster", "Blog", "Paper", "Notebook", "Training Logs", "Model Demo"]
+poster_dir = "resources"
+paper = "https://arxiv.org/pdf/1503.03832"
+blog = "https://aniketmaurya.com/tensorflow/face%20recognition/2019/01/07/face-recognition.html"
+github = "https://github.com/timesler/facenet-pytorch"
 
 app = L.LightningApp(
     ResearchApp(
-        poster_dir="resources",
+        poster_dir=poster_dir,
         paper=paper,
         blog=blog,
-        training_log_url=wandb,
         github=github,
-        notebook_path="resources/Interacting_with_CLIP.ipynb",
-        launch_jupyter_lab=False,
+        notebook_path="resources/infer.ipynb",
         launch_gradio=True,
-        tab_order=tabs,
-    )
+    ),
 )
 ```
 
