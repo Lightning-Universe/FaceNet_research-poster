@@ -59,6 +59,8 @@ class FaceNetDemo:
 
     def predict(self, image: Image.Image) -> str:
         img_cropped = self.mtcnn(image)
+        if img_cropped is None:
+            return "Are you sure the uploaded image contains a human face?"
         img_embedding = self.resnet(img_cropped.unsqueeze(0))
         least_dist = 999
         best_match = None
@@ -70,5 +72,5 @@ class FaceNetDemo:
         if least_dist > 0.8:
             logger.info(f"Large distance {best_match}: {least_dist}")
         if least_dist > 1:
-            return f"This looks like {best_match} but the similarity score distance is too high {least_dist}"
+            return f"This looks like {best_match} but the similarity score distance is too high {least_dist[0]}"
         return BIO[best_match]
