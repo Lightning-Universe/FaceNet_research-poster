@@ -8,7 +8,6 @@ from os.path import basename
 
 import torch
 from PIL import Image
-from facenet_pytorch import MTCNN, InceptionResnetV1
 from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
@@ -36,6 +35,7 @@ BIO = {
 
 class FaceNetDemo:
     def __init__(self):
+        from facenet_pytorch import MTCNN, InceptionResnetV1
         # If required, create a face detection pipeline using MTCNN:
         self.mtcnn = MTCNN(image_size=160)
 
