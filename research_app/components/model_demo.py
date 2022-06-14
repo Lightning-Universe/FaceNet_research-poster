@@ -1,4 +1,5 @@
 import logging
+import os.path
 
 import gradio as gr
 from PIL import Image
@@ -12,6 +13,17 @@ logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[Ric
 
 logger = logging.getLogger(__name__)
 
+example_images = [
+    ["resources/peter/example.jpg"],
+    ["resources/peter/tobey.jpeg"],
+    ["resources/peter/andrew-garfield.jpg"],
+]
+
+for file in example_images:
+    if not os.path.exists(file[0]):
+        logger.debug(f"files in resources images {os.listdir('resources/peter')}")
+        raise FileNotFoundError(f"Model example {file[0]} doesn't exist!")
+
 
 class ModelDemo(ServeGradio):
     """Serve model with Gradio UI.
@@ -24,11 +36,7 @@ class ModelDemo(ServeGradio):
     outputs = gr.outputs.Textbox()
     enable_queue = True
 
-    examples = [
-        ["resources/peter/example.jpg"],
-        ["resources/peter/tobey.jpeg"],
-        ["resources/peter/andrew-garfield.jpg"],
-    ]
+    examples = example_images
 
     def __init__(self):
         super().__init__(parallel=True)
