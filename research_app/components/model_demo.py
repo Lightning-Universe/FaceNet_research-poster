@@ -1,8 +1,10 @@
 import logging
 import os.path
+from typing import List
 
 import gradio as gr
 from PIL import Image
+from lightning import BuildConfig
 from lightning.components.serve import ServeGradio
 from rich.logging import RichHandler
 
@@ -25,6 +27,15 @@ for file in example_images:
         raise FileNotFoundError(f"Model example {file[0]} doesn't exist!")
 
 
+class ModelBuildConfig(BuildConfig):
+    def build_commands(self) -> List[str]:
+        return [
+            "pip uninstall -y opencv-python",
+            "pip uninstall -y opencv-python-headless",
+            "pip install opencv-python-headless==4.5.5.64",
+        ]
+
+
 class ModelDemo(ServeGradio):
     """Serve model with Gradio UI.
 
@@ -39,7 +50,7 @@ class ModelDemo(ServeGradio):
     examples = example_images
 
     def __init__(self):
-        super().__init__(parallel=True)
+        super().__init__(parallel=True, cloud_build_config=ModelBuildConfig())
 
     def build_model(self) -> FaceNetDemo:
         logger.info("loading model...")
