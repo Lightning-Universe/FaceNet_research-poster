@@ -3,9 +3,9 @@ import os.path
 from typing import List
 
 import gradio as gr
-from PIL import Image
 from lightning import BuildConfig
-from lightning.components.serve import ServeGradio
+from lightning.app.components.serve import ServeGradio
+from PIL import Image
 from rich.logging import RichHandler
 
 from research_app.facenet_demo import FaceNetDemo

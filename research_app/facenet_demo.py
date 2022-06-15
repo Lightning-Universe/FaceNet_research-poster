@@ -17,25 +17,24 @@ logger = logging.getLogger(__name__)
 
 BIO = {
     "tom": "Thomas Stanley Holland (born 1 June 1996) is an English actor. "
-           "His accolades include a British Academy Film Award, three Saturn Awards, "
-           "a Guinness World Record and an appearance on the Forbes 30 Under 30 Europe list. "
-           "Some publications have called him one of the most popular actors of his generation. Source: Wikipedia",
-
+    "His accolades include a British Academy Film Award, three Saturn Awards, "
+    "a Guinness World Record and an appearance on the Forbes 30 Under 30 Europe list. "
+    "Some publications have called him one of the most popular actors of his generation. Source: Wikipedia",
     "tobey": "Tobias Vincent Maguire is an American actor and film producer."
-             "He is best known for playing the title character from Sam Raimi's Spider-Man trilogy, "
-             "a role he later reprised in Spider-Man: No Way Home. Source: Wikipedia",
-
+    "He is best known for playing the title character from Sam Raimi's Spider-Man trilogy, "
+    "a role he later reprised in Spider-Man: No Way Home. Source: Wikipedia",
     "andrew": "Andrew Russell Garfield is an English and American actor."
-              "He has received various accolades, including a Tony Award, "
-              "a British Academy Television Award and a Golden Globe Award, "
-              "in addition to nominations for a Laurence Olivier Award, "
-              "two Academy Awards and three British Academy Film Awards. Source: Wikipedia"
+    "He has received various accolades, including a Tony Award, "
+    "a British Academy Television Award and a Golden Globe Award, "
+    "in addition to nominations for a Laurence Olivier Award, "
+    "two Academy Awards and three British Academy Film Awards. Source: Wikipedia",
 }
 
 
 class FaceNetDemo:
     def __init__(self):
         from facenet_pytorch import MTCNN, InceptionResnetV1
+
         # If required, create a face detection pipeline using MTCNN:
         self.mtcnn = MTCNN(image_size=160)
 
