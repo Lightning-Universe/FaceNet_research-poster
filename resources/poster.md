@@ -1,6 +1,6 @@
 <div style="height: 90pt;"></div>
 <div style="flex: 0 0 16%; margin-top: -10pt;">
-<img src="https://raw.githubusercontent.com/Lightning-AI/lightning/master/docs/source/_static/images/logo.png">
+<img src="https://avatars.githubusercontent.com/u/58386951?s=200&v=4">
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
 <h1 style="margin-bottom: 10pt;">SpiderMan Universe Finder</h1>
@@ -9,7 +9,7 @@
 <div style="flex: 1">
     <div style="display: flex; align-items: center;">
         <img style="height: 20pt; width: 20pt; margin: 5pt;" src="icons/fontawesome/brands/github.svg">
-        <div style="font-size: 0.9rem; margin-right: 5pt;"><a href="https://github.com/PyTorchLightning/">PyTorchLightning</a></div>
+        <div style="font-size: 0.9rem; margin-right: 5pt;"><a href="https://github.com/Lightning-AI/">lightning</a></div>
     </div>
     <div style="display: flex; align-items: center;">
         <img style="height: 20pt; width: 20pt; margin: 5pt;" src="icons/fontawesome/brands/twitter.svg">
@@ -24,7 +24,7 @@
 This app is a research poster demo of FaceNet paper. It showcases paper, a notebook, a blog, and a model demo where you
 can upload photos of Peter Parker (SpiderMan) from any universe and show you their bio.
 To create a research poster for your work please
-use [Lightning Research Template app](https://github.com/PyTorchLightning/lightning-template-research-app).
+use [Lightning Research Template app](https://github.com/Lightning-AI/LAI-research-template-App).
 
 
 ## FaceNet achieved a record new `99.63%` accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
