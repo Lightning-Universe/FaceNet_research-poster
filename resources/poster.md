@@ -1,6 +1,6 @@
 <div style="height: 90pt;"></div>
 <div style="flex: 0 0 16%; margin-top: -10pt;">
-<img src="https://raw.githubusercontent.com/PyTorchLightning/pytorch-lightning/master/docs/source/_static/images/logo.png">
+<img src="https://raw.githubusercontent.com/Lightning-AI/lightning/master/docs/source/_static/images/logo.png">
 </div>
 <div style="flex: 0 0 65%; text-align: center;">
 <h1 style="margin-bottom: 10pt;">SpiderMan Universe Finder</h1>
