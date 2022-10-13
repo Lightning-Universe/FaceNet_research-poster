@@ -3,6 +3,7 @@ import os
 from contextlib import contextmanager
 from time import sleep
 from typing import Generator
+import urllib.parse
 
 import pytest
 import requests
@@ -50,10 +51,21 @@ def get_gallery_app_page(app_name) -> Generator:
         """,
             [Config.id, Config.key, token],
         )
-        gallery_page.goto(f"{Config.url}/apps")
+
+        for retry_count in range(MAX_RETRY_COUNT):
+            try:
+                gallery_page.goto(f"{Config.url}/apps")
+            except playwright._impl._api_types.TimeoutError as ex:
+                try_ex = ex
+            try_ex = None
+            break
+        if try_ex:
+            raise try_ex
 
         # Find the app in the gallery
-        gallery_page.locator(f"text='{app_name}'").first.click()
+        # gallery_page.locator(f"text='{app_name}'").first.click()
+        encoded_app_name = urllib.parse.quote(app_name)
+        gallery_page.locator(f"a[href$='{encoded_app_name}']").click()
         yield gallery_page
 
 
@@ -78,7 +90,8 @@ def launch_from_gallery_app_page(gallery_page) -> Generator:
 def clone_and_run_from_gallery_app_page(app_gallery_page) -> Generator:
 
     with app_gallery_page.expect_navigation():
-        app_gallery_page.locator("text=Clone & Run").click()
+        # app_gallery_page.locator("text=Clone & Run").click()
+        app_gallery_page.locator('button:has-text("Clone & Run")').click()
 
     admin_page = app_gallery_page
 
