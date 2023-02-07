@@ -89,7 +89,6 @@ def launch_from_gallery_app_page(gallery_page) -> Generator:
 @requires("playwright")
 @contextmanager
 def clone_and_run_from_gallery_app_page(app_gallery_page) -> Generator:
-
     with app_gallery_page.expect_navigation():
         # app_gallery_page.locator("text=Clone & Run").click()
         app_gallery_page.locator('button:has-text("Clone & Run")').click()
@@ -185,12 +184,13 @@ def validate_app_functionalities(app_page: "Page") -> None:
     """
     app_page: The UI page of the app to be validated.
     """
-
     while True:
         try:
             app_page.reload()
             sleep(5)
-            app_label = app_page.frame_locator("iframe").locator("text='Recognize the SpiderMan actor name powered by FaceNet paper.'")
+            app_label = app_page.frame_locator("iframe").locator(
+                "text='Recognize the SpiderMan actor name powered by FaceNet paper.'"
+            )
             app_label.wait_for(timeout=30 * 1000)
             break
         except (
@@ -205,9 +205,7 @@ def validate_app_functionalities(app_page: "Page") -> None:
         tab_ui.wait_for(timeout=1000)
 
 
-@pytest.mark.skipif(
-    not os.getenv("TEST_APP_NAME", None), reason="requires TEST_APP_NAME env var"
-)
+@pytest.mark.skipif(not os.getenv("TEST_APP_NAME", None), reason="requires TEST_APP_NAME env var")
 def test_launch_app_from_gallery():
     app_name = os.getenv("TEST_APP_NAME", None)
     if app_name is None:
@@ -217,9 +215,8 @@ def test_launch_app_from_gallery():
         with launch_from_gallery_app_page(gallery_page) as app_page:
             validate_app_functionalities(app_page)
 
-@pytest.mark.skipif(
-    not os.getenv("TEST_APP_NAME", None), reason="requires TEST_APP_NAME env var"
-)
+
+@pytest.mark.skipif(not os.getenv("TEST_APP_NAME", None), reason="requires TEST_APP_NAME env var")
 def test_clone_and_run_app_from_gallery():
     app_name = os.getenv("TEST_APP_NAME", None)
     if app_name is None:
