@@ -26,15 +26,12 @@ can upload photos of Peter Parker (SpiderMan) from any universe and show you the
 To create a research poster for your work please
 use [Lightning Research Template app](https://github.com/Lightning-AI/LAI-research-template-App).
 
-
 ## FaceNet achieved a record new `99.63%` accuracy on the widely used Labeled Faces in the Wild (LFW) dataset.
 
 You can fork this app and edit to customize according to your need.
 
 Thanks to [timesler](https://github.com/timesler) for building amazing
 library [facenet-pytorch](https://github.com/timesler/facenet-pytorch).
-
-[//]: # (<img src="https://openaiassets.blob.core.windows.net/$web/clip/draft/20210104b/overview-a.svg">)
 
 FaceNet uses a deep convolutional network trained to directly optimize the embedding itself, rather than an intermediate
 bottleneck layer as in previous deep learning approaches. To train, it uses triplets of roughly aligned matching /
@@ -49,9 +46,11 @@ greater representational efficiency.
 
 !!! abstract "Key Features"
 
-    - **Easy to use-** Lightning apps follow the Lightning philosophy- easy to read, modular, intuitive, pythonic and highly composable interface that allows you to focus on what's important for you, and automate the rest.
-    - **Easy to scale**- Lightning provides a common experience locally and in the cloud. The Lightning.ai cloud platform abstracts the infrastructure, so you can run your apps at any scale. The modular and composable framework allows for simpler testing and debugging.
-    - **Leverage the power of the community-** Lightning.ai offers a variety of apps for any use case you can use as is or build upon. By following the best MLOps practices provided through the apps and documentation you can deploy state-of-the-art ML applications in days, not months.
+```
+- **Easy to use-** Lightning apps follow the Lightning philosophy- easy to read, modular, intuitive, pythonic and highly composable interface that allows you to focus on what's important for you, and automate the rest.
+- **Easy to scale**- Lightning provides a common experience locally and in the cloud. The Lightning.ai cloud platform abstracts the infrastructure, so you can run your apps at any scale. The modular and composable framework allows for simpler testing and debugging.
+- **Leverage the power of the community-** Lightning.ai offers a variety of apps for any use case you can use as is or build upon. By following the best MLOps practices provided through the apps and documentation you can deploy state-of-the-art ML applications in days, not months.
+```
 
 ```mermaid
 graph LR
