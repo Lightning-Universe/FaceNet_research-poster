@@ -28,7 +28,6 @@ your account.
 
 > ![use-template.png](./assets/use-template.png)
 
-
 Once you have installed the app, you can goto the `research-poster-facenet` folder and
 run `lightning run app app.py --cloud` from terminal.
 This will launch the template app in your default browser with tabs containing research paper, blog, Training
